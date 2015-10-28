@@ -17,15 +17,18 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = $player1.name
-    @player2 = $player2.name
+    @player1 = $player1
+    @player2 = $player2
     erb :play
   end
 
   get '/attack' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    erb :attack
+    @player1 = $player1
+    @player2 = $player2
+    @player2.receive_hit
+    @message = "#{@player1.name} attacked #{@player2.name}!"
+
+    erb :play
   end
 
   # start the server if ruby file executed directly

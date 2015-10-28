@@ -1,13 +1,16 @@
+<% if @message %>
+  <div><%= @message %></div>
+<% end %>
+
 <div class="names">
-    <%= @player1 %> vs <%= @player2 %>
+    <%= @player1.name %> vs <%= @player2.name %>
 </div>
 
 <div class="player1">
-    <%= @player1 %>
-    "0/60 HP"
+    <%= "#{@player1.hit_points}/60 HP" %>
     <a href="/attack">Attack</a>
 </div>
 
 <div class="player2">
-    "0/60 HP"
+    <%= "#{@player2.hit_points}/60 HP" %>
 </div>

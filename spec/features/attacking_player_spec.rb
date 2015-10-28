@@ -2,14 +2,21 @@ require "spec_helper"
 require "web_helpers"
 
 feature "Attacking" do
-  scenario "Player 1 attacks Player 2 and gets a confirmation" do
-    enter_names(player1: "John", player2: "Jane")
+  background "Piccachu attacks Slowpoke" do
+    @slowpoke_hp = 60
+
+    enter_names(player1: "Piccachu", player2: "Slowpoke")
 
     within("div.player1") do
       click_link "Attack"
     end
+  end
 
-    expect(current_path).to have_content("/attack")
-    expect(page).to have_content("John attacked Jane!")
+  scenario "and gets a confirmation" do
+    expect(page).to have_content("Piccachu attacked Slowpoke!")
+  end
+
+  scenario "Slowpoke's HP reduced by 20" do
+    expect(page).to have_content("40/60 HP")
   end
 end
