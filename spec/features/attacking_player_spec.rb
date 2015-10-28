@@ -3,8 +3,6 @@ require "web_helpers"
 
 feature "Attacking" do
   background "Piccachu attacks Slowpoke" do
-    @slowpoke_hp = 60
-
     enter_names(player1: "Piccachu", player2: "Slowpoke")
 
     within("div.player1") do

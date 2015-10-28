@@ -8,9 +8,10 @@
 
 <div class="player1">
     <%= "#{@player1.hit_points}/60 HP" %>
-    <a href="/attack">Attack</a>
+    <a href="/attack?attacked=player2">Attack</a>
 </div>
 
 <div class="player2">
     <%= "#{@player2.hit_points}/60 HP" %>
+    <a href="/attack?attacked=player1">Attack</a>
 </div>

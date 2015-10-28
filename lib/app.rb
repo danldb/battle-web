@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
   set :root, File.join(File.dirname(__FILE__), "..")
@@ -27,8 +28,9 @@ class Battle < Sinatra::Base
   get '/attack' do
     set_players
 
-    @message = "#{@player1.name} attacked #{@player2.name}!"
-    $game.attack(:player2)
+    attacker, attacked = battling_players
+    @message = "#{attacker.name} attacked #{attacked.name}!"
+    $game.attack(params[:attacked])
 
     erb :play
   end
@@ -38,7 +40,16 @@ class Battle < Sinatra::Base
       @player1 = $game.player1
       @player2 = $game.player2
     end
+
+    def battling_players
+      if params[:attacked] == "player1"
+        [@player2, @player1]
+      else
+        [@player1, @player2]
+      end
+    end
   end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
