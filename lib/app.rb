@@ -39,6 +39,7 @@ class Battle < Sinatra::Base
     def set_players
       @player1 = $game.player1
       @player2 = $game.player2
+      @game = $game
     end
 
     def battling_players

@@ -8,10 +8,14 @@
 
 <div class="player1">
     <%= "#{@player1.hit_points}/60 HP" %>
-    <a href="/attack?attacked=player2">Attack</a>
+    <% if @game.turn == :player1  %>
+        <a href="/attack?attacked=player2">Attack</a>
+    <% end %>
 </div>
 
 <div class="player2">
     <%= "#{@player2.hit_points}/60 HP" %>
-    <a href="/attack?attacked=player1">Attack</a>
+    <% if @game.turn == :player2  %>
+        <a href="/attack?attacked=player1">Attack</a>
+    <% end %>
 </div>
