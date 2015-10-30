@@ -13,11 +13,11 @@ describe Game do
   end
 
   it 'is player_1 turn' do
-    expect(game.turn).to eq :player1
+    expect(game.turn).to eq player1
   end
 
   it 'switches the turn when player attacks' do
     game.attack(:player2)
-    expect(game.turn).to eq :player2
+    expect(game.turn).to eq player2
   end
 end

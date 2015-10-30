@@ -1,10 +1,10 @@
 class Game
-  attr_reader :player1, :player2, :turn
+  attr_reader :player1, :player2
 
   def initialize(player1:, player2:)
     @player1 = player1
     @player2 = player2
-    @turn = :player1
+    @players = [@player1, @player2]
   end
 
   def attack(player)
@@ -12,14 +12,18 @@ class Game
     switch_turn
   end
 
+  def turn
+    players.first
+  end
+
   private
 
-  def switch_turn
-    if turn == :player1
-      self.turn = :player2
-    else
-      self.turn = :player1
+  attr_accessor :players
     end
+  end
+
+  def switch_turn
+    self.players = players.reverse
   end
 
   attr_writer :turn
