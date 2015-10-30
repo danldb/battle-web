@@ -6,3 +6,9 @@ def enter_names(player1: "John", player2: "Jane")
 
   click_button('Submit')
 end
+
+def attack(player)
+  within("div.#{player}") do
+    click_link "Attack"
+  end
+end

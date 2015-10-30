@@ -5,9 +5,7 @@ feature "Attacking" do
   background "Piccachu attacks Slowpoke" do
     enter_names(player1: "Piccachu", player2: "Slowpoke")
 
-    within("div.player1") do
-      click_link "Attack"
-    end
+    attack(:player1)
   end
 
   scenario "and gets a confirmation" do
