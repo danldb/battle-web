@@ -30,7 +30,7 @@ class Battle < Sinatra::Base
 
     attacker, attacked = battling_players
     @message = "#{attacker.name} attacked #{attacked.name}!"
-    $game.attack(params[:attacked])
+    $game.attack(attacked)
 
     erb :play
   end

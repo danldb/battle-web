@@ -15,4 +15,14 @@ describe Player do
     player.receive_hit
     expect(player.hit_points).to eq 40
   end
+
+  it 'can lose a game' do
+    player.lose
+    expect(player.status).to eq(:lose)
+  end
+
+  it 'displays the status if it status is set' do
+    player.lose
+    expect(player.print_status).to eq "Lose"
+  end
 end

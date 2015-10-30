@@ -8,8 +8,9 @@ class Game
   end
 
   def attack(player)
-    send(player).receive_hit
+    player.receive_hit
     switch_turn
+    set_status(player)
   end
 
   def turn
@@ -19,6 +20,11 @@ class Game
   private
 
   attr_accessor :players
+
+  def set_status(player)
+    other_player = (players - [player]).first
+    if player.hit_points == 0 and other_player.hit_points != 0
+      player.lose
     end
   end
 
