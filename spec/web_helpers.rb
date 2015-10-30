@@ -9,6 +9,6 @@ end
 
 def attack(player)
   within("div.#{player}") do
-    click_link "Attack"
+    click_button "Attack"
   end
 end

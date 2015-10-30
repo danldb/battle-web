@@ -3,21 +3,25 @@
 <% end %>
 
 <div class="names">
-    <%= @player1.name %> vs <%= @player2.name %>
+  <%= @player1.name %> vs <%= @player2.name %>
 </div>
 
 <div class="player1">
+  <form method="post" action="/attack">
     <%= @player1.print_status %>
-     <%= "#{@player1.hit_points}/60 HP" %>
+    <%= "#{@player1.hit_points}/60 HP" %>
     <% if @game.turn == @player1  %>
-        <a href="/attack?attacked=player2">Attack</a>
+      <button name="attacked" value="player2">Attack</button>
     <% end %>
+  </form>
 </div>
 
 <div class="player2">
+  <form method="post" action="/attack" name="player2"">
     <%= @player2.print_status %>
     <%= "#{@player2.hit_points}/60 HP" %>
     <% if @game.turn == @player2  %>
-        <a href="/attack?attacked=player1">Attack</a>
+      <button name="attacked" value="player1">Attack</button>
     <% end %>
+  </form>
 </div>

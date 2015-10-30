@@ -25,7 +25,7 @@ class Battle < Sinatra::Base
     erb :play
   end
 
-  get '/attack' do
+  post '/attack' do
     set_players
 
     attacker, attacked = battling_players
